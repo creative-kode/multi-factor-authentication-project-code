@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <style>
+        body {
+            background-image: url('digi.webp');
+            background-size: cover;
+            background-position: center;
+            font-family: Arial, sans-serif;
+            color: white;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 20px;
+            border-radius: 10px;
+            margin: 100px auto;
+            width: 300px;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input[type="file"] {
+            width: 100%;
+            padding: 8px;
+            border-radius: 5px;
+            border: none;
+        }
+
+        button {
+            padding: 10px;
+            border-radius: 5px;
+            border: none;
+            background-color: white;
+            color: black;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #eee;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <form action="{% url 'home' %}" method="post">
+            <!-- Form content -->
+            {% csrf_token %}
+            <h2 align="center">Login</h2>
+            <div class="form-group">
+                <label for="voice_id">Voice ID</label>
+                <input type="file" id="voice_id" name="voice_id" accept=".wav, .mp3" required>
+            </div>
+            <div class="form-group">
+                <label for="voice">Voice</label>
+                <input type="file" id="voice" name="voice" accept=".wav, .mp3" required>
+            </div>
+            <div class="form-group">
+                <label for="face">Face Data</label>
+                <input type="file" id="face" name="face" accept="image/*" required>
+            </div>
+            <div class="form-group">
+                <label for="palm">Palm Data</label>
+                <input type="file" id="palm" name="palm" accept="image/*" required>
+            </div>
+            <button type="submit">Login</button>
+        </form>
+        <p>Don't have an account? <a href="registration.html">Register</a></p>
+    </div>
+</body>
+</html>

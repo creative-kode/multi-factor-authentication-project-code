@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bank Registration Form</title>
+    <style>
+        body {
+            
+            background-size: cover;
+            background-position: center;
+            font-family: Arial, sans-serif;
+            color: white;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 20px;
+            border-radius: 10px;
+            margin: 100px auto;
+            width: 300px;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input[type="file"],
+        input[type="text"],
+        input[type="email"] {
+            width: 100%;
+            padding: 8px;
+            border-radius: 5px;
+            border: none;
+        }
+
+        button {
+            padding: 10px;
+            border-radius: 5px;
+            border: none;
+            background-color: white;
+            color: black;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #eee;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <form action="{% url 'login' %}" method="post" enctype="multipart/form-data">
+            <!-- Form content -->
+            {% csrf_token %}
+            <h2>Online Banking Registration</h2>
+            <div class="form-group">
+                <label for="voice">User ID as Voice</label>
+                <input type="file" id="voice" name="voice" accept=".wav, .mp3" required>
+            </div>
+            <div class="form-group">
+                <label for="fullname">Full Name</label>
+                <input type="text" id="fullname" name="fullname" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="voice_password">Voice Data</label>
+                <input type="file" id="voice_password" name="voice_password" accept=".wav, .mp3" required>
+            </div>
+            <div class="form-group">
+                <label for="face">Face Data</label>
+                <input type="file" id="face" name="face" accept="image/*" required>
+            </div>
+            <div class="form-group">
+                <label for="palm">Palm Data</label>
+                <input type="file" id="palm" name ="palm" accept="image/*" required>
+            </div>
+            <button type="submit">Register</button>
+        </form>
+        <p>Already have an account? <a href="login.html">Login</a></p>
+    </div>
+</body>
+</html>
